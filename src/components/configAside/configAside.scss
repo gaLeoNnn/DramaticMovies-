@@ -1,0 +1,38 @@
+.config {
+    position: absolute;
+    top: 125px;
+    left: -29px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 117px;
+    height: 317px;
+    flex-shrink: 0;
+    border-radius: 26px;
+    background: linear-gradient(
+        3deg,
+        #130b29 9.89%,
+        #5436a9 100%,
+        #5e47a1 100%
+    );
+
+    // .config__item
+
+    &__item {
+        background-color: transparent;
+        width: 30px;
+        height: 30px;
+        margin: 34px 29px 0 0;
+        &:first-child {
+            margin-top: 41px;
+        }
+        &:last-child {
+            margin-bottom: 41px;
+        }
+    }
+}
+
+.item-settings {
+    margin-top: 47px;
+}

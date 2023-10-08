@@ -1,0 +1,37 @@
+.recommends {
+  padding-top: 19px;
+  padding-left: 26px;
+  padding-bottom: 46px;
+
+  .link {
+    border-radius: 30px;
+    background: #5c5c5c;
+    padding: 10px 25px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5e47a1;
+    color: #fff;
+    border-radius: 30px;
+    width: 181px;
+    height: 43px;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+}
+.tabs {
+  display: flex;
+  margin-top: 25px;
+  gap: 23px;
+}
+.title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}

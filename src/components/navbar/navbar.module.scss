@@ -1,0 +1,30 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  margin-right: 60px;
+}
+.links {
+  display: flex;
+  gap: 37px;
+}
+.link {
+  color: #a1b1cb;
+}
+
+.active {
+  position: relative;
+  color: #fff;
+}
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 30px;
+  background: #38bbd8;
+}
