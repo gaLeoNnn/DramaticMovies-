@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Card from "../card/Card";
+import { useHttp } from "@/hooks/http.hook";
 import film1 from "@/assets/images/film1.png";
 import film2 from "@/assets/images/film2.png";
 import film3 from "@/assets/images/film3.png";
@@ -11,28 +12,47 @@ import film5 from "@/assets/images/film5.png";
 import film6 from "@/assets/images/film6.png";
 import film7 from "@/assets/images/film7.png";
 
+import { useEffect } from "react";
+import { fetched } from "@/actions/actions";
+
 const Carousel = () => {
-  const dataMovies = [
-    { id: 1, img: film1, title: "Kumbalangi Nights", year: 2019, imdb: 8.6 },
-    { id: 2, img: film2, title: "The Lunchbox", year: 2013, imdb: 7.7 },
-    { id: 3, img: film3, title: "Haider", year: 2014, imdb: 8.4 },
-    { id: 4, img: film4, title: "Aamis", year: 2019, imdb: 8.0 },
-    { id: 5, img: film5, title: "Court", year: 2014, imdb: 7.6 },
-    { id: 6, img: film6, title: "Masaan", year: 2015, imdb: 8.1 },
-    { id: 7, img: film7, title: "Kai Po Che", year: 2013, imdb: 6.6 },
-  ];
+  const { request } = useHttp();
+
+  useEffect(() => {
+    console.log("1");
+    request("https://api.themoviedb.org/3/discover/movie?api_key=f644a9e374730998ca1db7375e94383f").then(data => {
+      dispatch(fetched(data));
+      ("https://api.themoviedb.org/3/movie/movie_id?language=en-US");
+    });
+  }, []);
+
+  console.log(results);
+
+  // const dataMovies = [
+  //   { id: 1, img: film1, title: "Kumbalangi Nights", year: 2019, imdb: 8.6 },
+  //   { id: 2, img: film2, title: "The Lunchbox", year: 2013, imdb: 7.7 },
+  //   { id: 3, img: film3, title: "Haider", year: 2014, imdb: 8.4 },
+  //   { id: 4, img: film4, title: "Aamis", year: 2019, imdb: 8.0 },
+  //   { id: 5, img: film5, title: "Court", year: 2014, imdb: 7.6 },
+  //   { id: 6, img: film6, title: "Masaan", year: 2015, imdb: 8.1 },
+  //   { id: 7, img: film7, title: "Kai Po Che", year: 2013, imdb: 6.6 },
+  // ];
 
   const settings = {
     className: "center",
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 6,
+    // centerPadding: "60px",
+    slidesToShow: 6.4,
     arrows: false,
     swipeToSlide: true,
     afterChange: function (index: number) {
       console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
     },
   };
+
+  if (!results) {
+    return null;
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -46,7 +66,7 @@ const Carousel = () => {
           </select>
         </div>
         <Slider {...settings}>
-          {dataMovies.map(item => {
+          {results.map(item => {
             return <Card key={item.id} {...item} />;
           })}
         </Slider>

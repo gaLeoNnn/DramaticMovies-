@@ -6,24 +6,32 @@ import heart from "@/assets/images/heart.svg";
 
 interface IProps {
   id: number;
-  img: StaticImageData;
+  poster_path: string;
   title: string;
-  year: number;
-  imdb: number;
+  release_date: number;
+  vote_average: number;
 }
 
-const Card = ({ id, img, title, year, imdb }: IProps) => {
+const Card = ({ poster_path, title, release_date, vote_average }: IProps) => {
+  
+  
   return (
     <div className={styles.card}>
       <div className={styles.top}>
-        <Image className={styles.film} src={img} alt="img" />
+        <Image
+          className={styles.film}
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt="img"
+          width={168}
+          height={237}
+        />
         <div className={styles.title}>{title}</div>
-        <p className={styles.year}>{year}</p>
+        <p className={styles.year}>{release_date}</p>
       </div>
       <div className={styles.bottom}>
         <div className={styles.ratio}>
           <Image src={imdbImg} alt="imdb" />
-          <span>{imdb}</span>
+          <span>{vote_average}</span>
         </div>
         <div className={styles.icons}>
           <Image src={eye} alt="eye" />
